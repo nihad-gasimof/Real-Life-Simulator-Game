@@ -8,7 +8,7 @@ namespace CityLifeGameV3
     // Bütün oyun vəziyyətini (state) saxlayan və vaxtı idarə edən statik sinif.
     public static class GameState
     {
-        // Oyun vəziyyəti dəyişənləri
+        // --- ƏSAS OYUN VƏZİYYƏTİ DƏYİŞƏNLƏRİ ---
         public static int Balance = 500;
         public static int Hour = 6;
         public static int Day = 1;
@@ -16,13 +16,20 @@ namespace CityLifeGameV3
         public static int Age = 1; // Yaş limitini tətbiq etmək üçün
         public static Random Rand = new Random();
 
-        public static int CurrentYear = 2024; // YENİ: Oyunda mövcud il
-        public static bool IsDead = false; // YENİ: Ölüm vəziyyəti
+        public static int CurrentYear = 2024; // Oyunda mövcud il
+        public static bool IsDead = false; // Ölüm vəziyyəti
 
         public static int DaysSinceBirthday = 0; // Yaş proqressi üçün sayğac
+        public static int WorkCountPerDay = 0; // Gün ərzində iş sayını saxla (reset gündə)
 
-        // Gün ərzində iş sayını saxla (reset gündə)
-        public static int WorkCountPerDay = 0;
+        // --- YENİ: Şəxsi (Şəxsiyyət Vəsiqəsi) Məlumatları ---
+        // Program.cs-də daxil edilən bütün əlavə məlumatlar bura köçürüldü
+        public static string PlayerSurname = "";
+        public static string PlayerDateOfBirth = "";
+        public static string PlayerAddress = "";
+        public static string PlayerBloodGroup = "";
+        public static string PlayerMaritalStatus = "";
+        // --------------------------------------------------
 
         // Inventory & Documents
         public static List<string> Inventory = new List<string>();
@@ -48,8 +55,8 @@ namespace CityLifeGameV3
 
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("╔═════════════════════════════════════════════════════╗");
-            Console.WriteLine($"║ 👤 {Name}, {Age} yaş | 📅 Gün: {Day} | 🕒 Saat: {Hour:00}:00 ({36 - DaysSinceBirthday} günə ad günü) ║");
-            Console.WriteLine($"║ 💰 Balans: {Balance}$ | İl: {CurrentYear} | İş limiti: {WorkCountPerDay}/2 | Əşyalar: {Inventory.Count} ║"); // CurrentYear əlavə edildi
+            Console.WriteLine($"║ 👤 {Name} {PlayerSurname}, {Age} yaş | 📅 Gün: {Day} | 🕒 Saat: {Hour:00}:00 ({36 - DaysSinceBirthday} günə ad günü) ║");
+            Console.WriteLine($"║ 💰 Balans: {Balance}$ | İl: {CurrentYear} | İş limiti: {WorkCountPerDay}/2 | Əşyalar: {Inventory.Count} ║");
             Console.WriteLine($"║ Status: ID: {(Documents["Şəxsiyyət Vəsiqəsi (ID)"] ? "✅" : "❌")} | Pro İş: {(UnlockedProJob ? "✅" : "❌")} | Konsol: {(HasGameConsole ? "✅" : "❌")} ║");
             Console.WriteLine("╚═════════════════════════════════════════════════════╝");
             Console.ForegroundColor = ConsoleColor.White;
@@ -85,7 +92,7 @@ namespace CityLifeGameV3
             {
                 Age++;
                 DaysSinceBirthday = 0;
-                CurrentYear++; // YENİ: İl dəyişir
+                CurrentYear++; // İl dəyişir
                 UI.ShowMessage($"AD GÜNÜN MÜBARƏK! Artıq {Age} yaşın var. İl: {CurrentYear}", ConsoleColor.Green);
                 CheckAgeUnlocks(); // Yaş dəyişəndə kilidləri yoxla
             }

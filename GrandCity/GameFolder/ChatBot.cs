@@ -1,149 +1,120 @@
 ﻿using System;
-using System.Net.Http;
-using System.Text;
-using System.Text.Json;
-using System.Threading;
 using System.Collections.Generic;
+using System.Threading; // Gecikmə simulyasiyası üçün saxlandı
 
 namespace CityLifeGameV3
 {
     // Chatbot funksionallığı (Simulyasiya edilmiş dost ilə chat)
     public static class Chatbot
     {
-        private static readonly HttpClient client = new HttpClient();
+        // Təsadüfi cavablar üçün siyahı (API-siz Simulyasiya). Hər dəfə fərqli və situasiyalı cavablar verir.
+        private static readonly List<string> SimulatedResponses = new List<string>
+        {
+            "Təsəvvür et, bu gün səninlə getmək istədiyim yeni bir kafe tapdım! Yeri haqqında nə düşünürsən?", // Yeni situasiya 1
+            "Mənə elə gəlir ki, şəhərin o tərəfində maraqlı bir film göstərilir. Birlikdə baxsaq necə olar?", // Yeni situasiya 2
+            "Salam! Həyat necə gedir? Dərs/işlər yaxşıdır? Mən bu səhər nəqliyyatda ilişib qalmışdım!", // Mövcud + situasiya
+            "Mən də yaxşıyam, amma bir az darıxıram. Səninlə danışmaq əla oldu! Gələn həftə sonu üçün bir planımız varmı?", // Mövcud + situasiya
+            "Bu yaxınlarda maraqlı bir şey oldumu? Mənə danış. Məsələn, dünənki futbol matçını izlədinmi?", // Mövcud + situasiya
+            "Nə düşünürsən, bu gün nə etməliyik? Hava çox soyuqdur, bəlkə evdə qalaq?", // Situasiya
+            "Ah, mənim də internetim yoxdur. Telefonum ölmək üzrədir. Təcili şarj cihazı tapmalıyım!", // Situasiya
+            "Həqiqətən? Çox maraqlıdır! Bəs sonra nə oldu? O hadisə sənə necə təsir etdi?",
+            "Bir az stress altındayam. Sən necə öhdəsindən gəlirsən? Məsələn, meditasiya edirsən?", // Mövcud + situasiya
+            "Yadımdadır, bir dəfə mənə filan kitabdan danışmışdın. Onu oxuyub bitirdinmi?", // Keçmişə aid sual/situasiya
+            "Səncə, bu il tətili harada keçirmək daha yaxşı olar? Dağ yoxsa dəniz?" // Yeni situasiya 3
+        };
+
+        private static readonly Random RandomGenerator = new Random();
+
         // Chat tarixçəsi dost adı ilə
         private static List<string> chatHistory = new List<string>
         {
             "Salam! Mən sənin dostun Aydanam. Necəsən? Nə vaxtdır danışmırıq!"
         };
         private static string friendName = "Aydan";
-        private const string GEMINI_MODEL = "gemini-2.5-flash-preview-09-2025";
 
         // Chat menyusu
         public static void ChatbotMenu()
         {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"--- 💬 Chat ({friendName} ilə) ---");
-            Console.WriteLine("-----------------------------------");
-
-            // Tarixçəni göstər
-            foreach (var message in chatHistory)
+            while (true) // Davamlı söhbət üçün dövrə
             {
-                if (message.StartsWith($"{friendName}:"))
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"--- 💬 Chat ({friendName} ilə) ---");
+                Console.WriteLine("-----------------------------------");
+
+                // Tarixçəni göstər
+                foreach (var message in chatHistory)
                 {
-                    Console.ForegroundColor = ConsoleColor.Cyan;
+                    if (message.StartsWith($"{friendName}:"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Cyan;
+                    }
+                    else if (message.StartsWith("Sən:"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.Yellow;
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    Console.WriteLine(message);
                 }
-                else if (message.StartsWith("Sən:"))
+
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("-----------------------------------");
+                Console.WriteLine("Cavabını yaz (yazmaq üçün Enter, çıxmaq üçün 'q'):");
+                Console.Write("Sən: ");
+                string input = Console.ReadLine() ?? "";
+
+                if (input.Trim().ToLower() == "q")
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Chatdan çıxdın.");
+                    Thread.Sleep(500);
+                    return; // Tamamilə çıx
                 }
-                else
+
+                if (!string.IsNullOrWhiteSpace(input))
                 {
-                    Console.ForegroundColor = ConsoleColor.White;
+                    // Oyunçunun mesajını əlavə et
+                    chatHistory.Add($"Sən: {input}");
+
+                    // Dostun cavabını al (İndi API-siz, daxili simulyasiya)
+                    GetFriendResponse(input);
                 }
-                Console.WriteLine(message);
-            }
 
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.WriteLine("-----------------------------------");
-            Console.WriteLine("Cavabını yaz (yazmaq üçün Enter, çıxmaq üçün 'q'):");
-            Console.Write("Sən: ");
-
-            string input = Console.ReadLine() ?? "";
-
-            if (input.Trim().ToLower() == "q")
-            {
-                Console.WriteLine("Chatdan çıxdın.");
-                Thread.Sleep(500);
-                return;
-            }
-
-            if (!string.IsNullOrWhiteSpace(input))
-            {
-                // Oyunçunun mesajını əlavə et
-                chatHistory.Add($"Sən: {input}");
-
-                // Dostun cavabını al
-                GetFriendResponse(input);
-            }
-
-            GameState.NextHour(1); // Chat 1 saat vaxt aparır
+                // GameState mövcud deyil, lakin original faylda var idi. Simulyasiya məqsədilə saxlanılır.
+                // GameState.NextHour(1); // Chat 1 saat vaxt aparır
+            } // while dövrəsi burada bitir
         }
 
-        // Gemini API ilə cavab almaq
-        private static async void GetFriendResponse(string userMessage)
+        // Dostun cavabını almaq (API-siz, daxili simulyasiya)
+        private static void GetFriendResponse(string userMessage)
         {
-            Console.Write("Aydan yazır... ");
-            UI.Animate("...");
+            Console.Write($"{friendName} yazır... ");
 
-            // Sistem təlimatı - Dostun personası
-            var systemPrompt = $"Sən '{friendName}' adlı {GameState.Age} yaşlı bir dostsan. '{GameState.Name}' adlı oyunçu ilə danışırsan. Çox realist, casual (qeyri-rəsmi) və azərbaycan dilində cavab ver. Ona məsləhətlər verə, nəsə soruşa bilərsən. Söhbəti davam etdir. Hər cavabında yalnız bir cümlə olmalıdır, 30 sözü keçməməlidir.";
+            // Simulyasiya: Cavan gələnə qədər bir az gözləmə
+            Thread.Sleep(700);
 
-            // Hazırki chat tarixçəsini API üçün formatla
-            var contents = new List<object>();
-            foreach (var msg in chatHistory)
+            string text = GetRandomResponse();
+
+            if (string.IsNullOrWhiteSpace(text))
             {
-                var role = msg.StartsWith($"{friendName}:") ? "model" : "user";
-                var text = msg.Replace($"{friendName}: ", "").Replace("Sən: ", "");
-
-                // Məhdudiyyət: 'model'in cavabı tarixçədə 'user'in cavabından sonra gəlməlidir.
-                // Biz yalnız son istifadəçi mesajını göndərəcəyik, yoxsa API-nin formatını pozacaq.
-                // Sadəlik üçün yalnız son mesajı istifadə edək:
-                if (msg == chatHistory[^1])
-                {
-                    contents.Add(new { role = "user", parts = new[] { new { text = text } } });
-                    break;
-                }
+                // Təsadüfən boş cavab gəlsə, ehtiyat cavab
+                text = "Hmm, nə isə yazmaq istədim, amma alınmadı. Təzədən yaz zəhmət olmasa.";
             }
 
-            var payload = new
-            {
-                contents = contents,
-                systemInstruction = new { parts = new[] { new { text = systemPrompt } } },
-            };
+            chatHistory.Add($"{friendName}: {text.Trim()}");
 
-            // API çağırışı üçün boş API açarı
-            const string apiKey = "";
-            const string apiUrl = $"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent?key={apiKey}";
+            // Xəta mesajı olmadığı üçün normal cavab mesajını göstər
+            Console.WriteLine("Cavab gəldi.");
+        }
 
-            try
-            {
-                var jsonPayload = JsonSerializer.Serialize(payload);
-                var content = new StringContent(jsonPayload, Encoding.UTF8, "application/json");
-
-                var response = await client.PostAsync(apiUrl, content);
-                response.EnsureSuccessStatusCode();
-
-                var responseBody = await response.Content.ReadAsStringAsync();
-                var result = JsonSerializer.Deserialize<JsonElement>(responseBody);
-
-                // Cavabı çıxar
-                var text = result
-                    .GetProperty("candidates")[0]
-                    .GetProperty("content")
-                    .GetProperty("parts")[0]
-                    .GetProperty("text")
-                    .GetString();
-
-                if (string.IsNullOrWhiteSpace(text))
-                {
-                    text = "Hmm, nə isə yazmaq istədim, amma alınmadı. Təzədən yaz zəhmət olmasa.";
-                }
-
-                chatHistory.Add($"{friendName}: {text.Trim()}");
-                Console.WriteLine("Cavab gəldi.");
-
-            }
-            catch (Exception ex)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"\n[XƏTA] Dostun cavab verə bilmədi (API xətası).");
-                Console.WriteLine("Dostun deyir: 'Bağışla, internetim yoxdur... zəng gələndə yazaram.'");
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.WriteLine($"Detallar: {ex.Message}");
-                chatHistory.Add($"{friendName}: Bağışla, internetim getdi. Sonra yazaram.");
-            }
+        // Təsadüfi cavabı qaytaran metod
+        private static string GetRandomResponse()
+        {
+            // Təsadüfi indeks seçilir
+            int index = RandomGenerator.Next(SimulatedResponses.Count);
+            return SimulatedResponses[index];
         }
     }
 }

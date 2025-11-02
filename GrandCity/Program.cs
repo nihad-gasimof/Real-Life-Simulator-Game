@@ -6,6 +6,9 @@ namespace CityLifeGameV3
 {
     internal class Program
     {
+        // QEYD: Bütün şəxsi məlumatlar artıq GameState.cs-də saxlanılır və buradan istinad edilir.
+        // Program.cs-dəki keçici sahələr ləğv edildi, GameState istifadə olunur.
+
         static void Main(string[] args)
         {
             // Kodlaşdırma tənzimləmələri
@@ -25,23 +28,64 @@ namespace CityLifeGameV3
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine("***********************************");
-            Console.WriteLine("    🌆 Şəhər Həyatı — RPG Başlayır    ");
+            Console.WriteLine("    🌆 Şəhər Həyatı — RPG Başlayır    ");
             Console.WriteLine("***********************************");
             Console.ForegroundColor = ConsoleColor.White;
 
+            Console.WriteLine("\n--- 📝 Şəxsiyyət Vəsiqəsi Məlumatlarının Daxil Edilməsi ---");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Bu məlumatlar oyun daxilində sənədləşmə üçün istifadə olunacaq.");
+            Console.ForegroundColor = ConsoleColor.White;
+
+            // 1. Ad (Name)
             while (string.IsNullOrWhiteSpace(GameState.Name))
             {
-                Console.Write("Adını daxil et: ");
+                Console.Write("1. Adınızı daxil edin: ");
                 GameState.Name = Console.ReadLine() ?? "";
             }
 
+            // 2. Soyad (Surname)
+            while (string.IsNullOrWhiteSpace(GameState.PlayerSurname))
+            {
+                Console.Write("2. Soyadınızı daxil edin: ");
+                GameState.PlayerSurname = Console.ReadLine() ?? "";
+            }
+
+            // 3. Yaş (Age)
             while (true)
             {
-                Console.Write("Yaşını daxil et (İstədiyiniz yaşı seçə bilərsiniz): ");
+                Console.Write("3. Yaşınızı daxil edin (məsələn: 25): ");
                 string s = Console.ReadLine() ?? "";
-                // Yaş limitini qaldırırıq, yalnız rəqəm olmasını yoxlayırıq.
                 if (int.TryParse(s, out GameState.Age) && GameState.Age > 0 && GameState.Age < 200) break;
-                Console.WriteLine("Düzgün yaş daxil et (məsələn: 15, 25).");
+                Console.WriteLine("Düzgün yaş daxil edin.");
+            }
+
+            // 4. Doğum Tarixi (Date of Birth)
+            while (string.IsNullOrWhiteSpace(GameState.PlayerDateOfBirth))
+            {
+                Console.Write("4. Doğum Tarixinizi daxil edin (Məsələn: 1990-10-25): ");
+                GameState.PlayerDateOfBirth = Console.ReadLine() ?? "";
+            }
+
+            // 5. Ünvan (Address)
+            while (string.IsNullOrWhiteSpace(GameState.PlayerAddress))
+            {
+                Console.Write("5. Yaşayış Ünvanınızı daxil edin: ");
+                GameState.PlayerAddress = Console.ReadLine() ?? "";
+            }
+
+            // 6. Qan Qrupu (Blood Group)
+            while (string.IsNullOrWhiteSpace(GameState.PlayerBloodGroup))
+            {
+                Console.Write("6. Qan Qrupunu daxil edin (Məsələn: A+, 0-): ");
+                GameState.PlayerBloodGroup = Console.ReadLine() ?? "";
+            }
+
+            // 7. Ailə Vəziyyəti (Marital Status)
+            while (string.IsNullOrWhiteSpace(GameState.PlayerMaritalStatus))
+            {
+                Console.Write("7. Ailə Vəziyyətinizi daxil edin (Məsələn: Subay, Evli): ");
+                GameState.PlayerMaritalStatus = Console.ReadLine() ?? "";
             }
 
             // Başlanğıc ilini təyin et
@@ -52,10 +96,15 @@ namespace CityLifeGameV3
 
             Console.Clear();
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"Salam, {GameState.Name}! Macəra başlayır... Başlanğıc Balans: {GameState.Balance}$");
-            Console.WriteLine($"Başlanğıc il: {GameState.CurrentYear}");
-            Console.WriteLine("Şəxsi məlumatlarınızı daxil etdiyiniz üçün Şəxsiyyət Vəsiqəniz avtomatik olaraq verildi. ✅");
-            Thread.Sleep(2000);
+            Console.WriteLine($"Salam, {GameState.Name} {GameState.PlayerSurname}! Macəra başlayır...");
+            Console.WriteLine($"Başlanğıc Balans: {GameState.Balance}$, Başlanğıc il: {GameState.CurrentYear}");
+            Console.WriteLine("---------------------------------------------------------------------");
+            Console.WriteLine("✅ Şəxsiyyət Vəsiqəniz (ID) bütün daxil etdiyiniz məlumatlarla verildi.");
+            Console.WriteLine($"Əsas məlumatlar: Yaş: {GameState.Age}, DT: {GameState.PlayerDateOfBirth}, Ünvan: {GameState.PlayerAddress}");
+            Console.WriteLine($"Əlavə məlumatlar: Qan Qrupu: {GameState.PlayerBloodGroup}, Ailə Vəz.: {GameState.PlayerMaritalStatus}");
+            Console.WriteLine("---------------------------------------------------------------------");
+            Console.ForegroundColor = ConsoleColor.White;
+            Thread.Sleep(3000);
         }
 
         // Əsas Oyun Dövrü
@@ -63,7 +112,7 @@ namespace CityLifeGameV3
         {
             while (true)
             {
-                // YENİ: Oyunçu ölübsə, dövrü sonlandır
+                // Oyunçu ölübsə, dövrü sonlandır
                 if (GameState.IsDead)
                 {
                     Console.WriteLine("\nOyunu sonlandırmaq üçün Enter düyməsini bas...");
@@ -81,7 +130,7 @@ namespace CityLifeGameV3
                 Console.Clear();
                 GameState.ShowStatus();
 
-                // YENİ: Hər fəaliyyətdən əvvəl ani təhlükə yoxlaması (1% şans)
+                // Hər fəaliyyətdən əvvəl ani təhlükə yoxlaması (1% şans)
                 LifeEvents.CheckForImmediateDanger(afterTimeTravel: false);
 
                 // Ölüm yoxlaması yenidən
@@ -153,48 +202,161 @@ namespace CityLifeGameV3
         // Sənədlər Menyu (Pasport və Sürücülük üçün Müraciət)
         static void DocumentsMenu()
         {
+            while (true)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("--- 📝 Şəxsi Sənədlər Menyu ---");
+                Console.ForegroundColor = ConsoleColor.White;
+
+                // Cari Sənədlər və Əşya Çantası
+                Console.WriteLine("Cari Sənədlər:");
+                int idx = 1;
+                foreach (var doc in GameState.Documents)
+                {
+                    Console.WriteLine($"{idx}. {doc.Key}: {(doc.Value ? "✅ VAR" : "❌ YOXDUR")}");
+                    idx++;
+                }
+
+                Console.WriteLine($"\nƏşya Çantası ({GameState.Inventory.Count} əşya):");
+                if (GameState.Inventory.Any())
+                {
+                    Console.WriteLine(string.Join(", ", GameState.Inventory));
+                }
+                else
+                {
+                    Console.WriteLine("Boşdur.");
+                }
+
+                // Seçimlər
+                Console.WriteLine("\nSeçimlər:");
+                Console.WriteLine("1. 🛂 Pasport üçün Müraciət (300$, Yaş 18+)");
+                Console.WriteLine("2. 🚗 Sürücülük Vəsiqəsi üçün Müraciət (200$, Yaş 18+)");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("3. 👁️ Sənədlərə Bax (Kart Görünüşü)"); // YENİ SEÇİM
+                Console.ForegroundColor = ConsoleColor.White;
+                Console.WriteLine("4. Geri");
+                Console.Write("Seçim: ");
+
+                string s = Console.ReadLine() ?? "";
+
+                switch (s.Trim())
+                {
+                    case "1": ApplyForDocument("Pasport (Beynəlxalq)", 300, 18); break;
+                    case "2": ApplyForDocument("Sürücülük Vəsiqəsi", 200, 18); break;
+                    case "3": ViewDocumentsMenu(); break; // YENİ funksiya çağırılır
+                    case "4": return;
+                    default:
+                        UI.ShowMessage("Yanlış seçim.", ConsoleColor.Red);
+                        break;
+                }
+            }
+        }
+
+        // Sənədlərə Baxış Menyu
+        static void ViewDocumentsMenu()
+        {
+            while (true)
+            {
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Cyan;
+                Console.WriteLine("--- 👁️ Sənədlərə Baxış ---");
+                Console.ForegroundColor = ConsoleColor.White;
+
+                Console.WriteLine("Hansı sənədə baxmaq istəyirsiniz?");
+
+                var availableDocs = GameState.Documents.Where(d => d.Value).ToList();
+                int selectionIndex = 1;
+                var docMap = new Dictionary<int, string>();
+
+                if (!availableDocs.Any())
+                {
+                    UI.ShowMessage("Baxılacaq sənəd yoxdur. Əvvəlcə Şəxsiyyət Vəsiqəsi avtomatik verilir.", ConsoleColor.Red);
+                    break;
+                }
+
+                foreach (var doc in availableDocs)
+                {
+                    Console.WriteLine($"{selectionIndex}. {doc.Key}");
+                    docMap.Add(selectionIndex, doc.Key);
+                    selectionIndex++;
+                }
+
+                Console.WriteLine($"{selectionIndex}. Geri");
+                Console.Write("Seçim: ");
+
+                string s = Console.ReadLine() ?? "";
+                if (int.TryParse(s, out int choice) && docMap.ContainsKey(choice))
+                {
+                    ViewDocumentCard(docMap[choice]);
+                }
+                else if (int.TryParse(s, out int backChoice) && backChoice == selectionIndex)
+                {
+                    return;
+                }
+                else
+                {
+                    UI.ShowMessage("Yanlış seçim.", ConsoleColor.Red);
+                }
+            }
+        }
+
+        // Seçilmiş sənədin "kart" görünüşünü çıxarır
+        static void ViewDocumentCard(string docName)
+        {
             Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine("--- 📝 Şəxsi Sənədlər Menyu ---");
+
+            // Xüsusi sənəd dizaynı
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("╔══════════════════════════════════════════════════╗");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.Write("║ ");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.Write($"{docName.ToUpper()}");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine(" - AZ 0123456789                         ║");
+
+            // Məlumat Blokları
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("╠══════════════════════════════════════════════════╣");
             Console.ForegroundColor = ConsoleColor.White;
 
-            Console.WriteLine($"Şəxsi məlumat: Ad: {GameState.Name}, Yaş: {GameState.Age}");
-            Console.WriteLine("-----------------------------");
-            Console.WriteLine("Cari Sənədlər:");
+            // 1. Ad, Soyad
+            Console.WriteLine($"║ AD/SOYAD: {GameState.Name.ToUpper()} {GameState.PlayerSurname.ToUpper()}");
 
-            int idx = 1;
-            foreach (var doc in GameState.Documents)
+            // 2. Yaş, DT
+            Console.WriteLine($"║ DOĞUM TARİXİ: {GameState.PlayerDateOfBirth} ({GameState.Age} Yaş)");
+
+            // 3. Ünvan
+            Console.WriteLine($"║ ÜNVAN: {GameState.PlayerAddress}");
+
+            // Pasport və Sürücülük üçün əlavə sahələr
+            if (docName != "Şəxsiyyət Vəsiqəsi (ID)")
             {
-                Console.WriteLine($"{idx}. {doc.Key}: {(doc.Value ? "✅ VAR" : "❌ YOXDUR")}");
-                idx++;
+                // Pasport üçün xüsusi sahə
+                if (docName.Contains("Pasport"))
+                {
+                    Console.WriteLine($"║ BEYNƏLXALQ NÖMRƏ: P-{GameState.Age}{GameState.Day}{GameState.Hour}");
+                }
+
+                // Sürücülük üçün xüsusi sahə (Yaş 18+, Avtomatik "B" Kateqoriyası)
+                if (docName.Contains("Sürücülük"))
+                {
+                    string category = GameState.Age >= 18 ? "B (Avtomobil)" : "Yoxdur";
+                    Console.WriteLine($"║ KATEQORİYA: {category}");
+                }
             }
 
-            Console.WriteLine($"\nƏşya Çantası ({GameState.Inventory.Count} əşya):");
-            if (GameState.Inventory.Any())
-            {
-                Console.WriteLine(string.Join(", ", GameState.Inventory));
-            }
-            else
-            {
-                Console.WriteLine("Boşdur.");
-            }
+            // Bütün sənədlər üçün ortaq: Qan qrupu və Ailə Vəziyyəti
+            Console.WriteLine($"║ QAN QRUPU: {GameState.PlayerBloodGroup}  | AİLƏ VƏZİYYƏTİ: {GameState.PlayerMaritalStatus}");
 
-            // Pasport və ya Sürücülük üçün müraciət etmək
-            Console.WriteLine("\nƏlavə Sənədlər üçün Müraciət Et:");
-            // Pasport və Sürücülük artıq daxili funksiya kimi idarə olunur.
-            Console.WriteLine("1. 🛂 Pasport üçün Müraciət (300$, Yaş 18+)");
-            Console.WriteLine("2. 🚗 Sürücülük Vəsiqəsi üçün Müraciət (200$, Yaş 18+)");
-            Console.WriteLine("3. Geri");
-            Console.Write("Seçim: ");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
+            Console.WriteLine("╚══════════════════════════════════════════════════╝");
+            Console.ForegroundColor = ConsoleColor.White;
 
-            string s = Console.ReadLine() ?? "";
-
-            switch (s.Trim())
-            {
-                case "1": ApplyForDocument("Pasport (Beynəlxalq)", 300, 18); break;
-                case "2": ApplyForDocument("Sürücülük Vəsiqəsi", 200, 18); break;
-                default: break;
-            }
+            // Nəticə və Geri qayıtma
+            UI.ShowMessage("Sənədə baxmaq üçün Enter düyməsini sıxın...", ConsoleColor.Yellow);
+            Console.ReadLine();
         }
 
         // Sənəd üçün müraciət prosesi
@@ -224,6 +386,7 @@ namespace CityLifeGameV3
 
             UI.ShowMessage($"Təbriklər! {docName} üçün müraciət uğurla tamamlandı. Xərc: {cost}$", ConsoleColor.Green);
             GameState.NextHour(2); // Proses 2 saat vaxt aparır
+
         }
     }
 }
