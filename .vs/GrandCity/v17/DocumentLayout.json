@@ -1,0 +1,173 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|c:\\users\\nihad\\onedrive\\desktop\\grandcity\\grandcity\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|solutionrelative:grandcity\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|c:\\users\\nihad\\onedrive\\desktop\\grandcity\\grandcity\\gamefolder\\casino.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|solutionrelative:grandcity\\gamefolder\\casino.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|c:\\users\\nihad\\onedrive\\desktop\\grandcity\\grandcity\\gamefolder\\store.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|solutionrelative:grandcity\\gamefolder\\store.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|c:\\users\\nihad\\onedrive\\desktop\\grandcity\\grandcity\\gamefolder\\activities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|solutionrelative:grandcity\\gamefolder\\activities.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|c:\\users\\nihad\\onedrive\\desktop\\grandcity\\grandcity\\gamefolder\\ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|solutionrelative:grandcity\\gamefolder\\ui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|c:\\users\\nihad\\onedrive\\desktop\\grandcity\\grandcity\\gamefolder\\gamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|solutionrelative:grandcity\\gamefolder\\gamestate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|c:\\users\\nihad\\onedrive\\desktop\\grandcity\\grandcity\\gamefolder\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|solutionrelative:grandcity\\gamefolder\\item.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|c:\\users\\nihad\\onedrive\\desktop\\grandcity\\grandcity\\gamefolder\\chatbot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|solutionrelative:grandcity\\gamefolder\\chatbot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|c:\\users\\nihad\\onedrive\\desktop\\grandcity\\grandcity\\gamefolder\\lifeevents.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{90C4A32C-F9AF-439A-AB10-0A8EB5D41154}|GrandCity\\GrandCity.csproj|solutionrelative:grandcity\\gamefolder\\lifeevents.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ChatBot.cs",
+              "DocumentMoniker": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\GameFolder\\ChatBot.cs",
+              "RelativeDocumentMoniker": "GrandCity\\GameFolder\\ChatBot.cs",
+              "ToolTip": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\GameFolder\\ChatBot.cs",
+              "RelativeToolTip": "GrandCity\\GameFolder\\ChatBot.cs",
+              "ViewState": "AgIAAHEAAAAAAAAAAAAIwJUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T19:20:27.503Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LifeEvents.cs",
+              "DocumentMoniker": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\GameFolder\\LifeEvents.cs",
+              "RelativeDocumentMoniker": "GrandCity\\GameFolder\\LifeEvents.cs",
+              "ToolTip": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\GameFolder\\LifeEvents.cs",
+              "RelativeToolTip": "GrandCity\\GameFolder\\LifeEvents.cs",
+              "ViewState": "AgIAAI4AAAAAAAAAAAAIwLIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T19:20:11.914Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Casino.cs",
+              "DocumentMoniker": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\GameFolder\\Casino.cs",
+              "RelativeDocumentMoniker": "GrandCity\\GameFolder\\Casino.cs",
+              "ToolTip": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\GameFolder\\Casino.cs",
+              "RelativeToolTip": "GrandCity\\GameFolder\\Casino.cs",
+              "ViewState": "AgIAAJ0AAAAAAAAAAAAIwMEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T19:09:20.405Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Store.cs",
+              "DocumentMoniker": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\GameFolder\\Store.cs",
+              "RelativeDocumentMoniker": "GrandCity\\GameFolder\\Store.cs",
+              "ToolTip": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\GameFolder\\Store.cs",
+              "RelativeToolTip": "GrandCity\\GameFolder\\Store.cs",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAIwMsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T19:09:01.403Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Activities.cs",
+              "DocumentMoniker": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\GameFolder\\Activities.cs",
+              "RelativeDocumentMoniker": "GrandCity\\GameFolder\\Activities.cs",
+              "ToolTip": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\GameFolder\\Activities.cs",
+              "RelativeToolTip": "GrandCity\\GameFolder\\Activities.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAAAIwJwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T19:08:49.816Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UI.cs",
+              "DocumentMoniker": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\GameFolder\\UI.cs",
+              "RelativeDocumentMoniker": "GrandCity\\GameFolder\\UI.cs",
+              "ToolTip": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\GameFolder\\UI.cs",
+              "RelativeToolTip": "GrandCity\\GameFolder\\UI.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T19:08:27.892Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "GameState.cs",
+              "DocumentMoniker": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\GameFolder\\GameState.cs",
+              "RelativeDocumentMoniker": "GrandCity\\GameFolder\\GameState.cs",
+              "ToolTip": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\GameFolder\\GameState.cs",
+              "RelativeToolTip": "GrandCity\\GameFolder\\GameState.cs",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAIwHcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T19:08:13.507Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Item.cs",
+              "DocumentMoniker": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\GameFolder\\Item.cs",
+              "RelativeDocumentMoniker": "GrandCity\\GameFolder\\Item.cs",
+              "ToolTip": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\GameFolder\\Item.cs",
+              "RelativeToolTip": "GrandCity\\GameFolder\\Item.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T19:07:52.842Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\Program.cs",
+              "RelativeDocumentMoniker": "GrandCity\\Program.cs",
+              "ToolTip": "C:\\Users\\Nihad\\OneDrive\\Desktop\\GrandCity\\GrandCity\\Program.cs",
+              "RelativeToolTip": "GrandCity\\Program.cs",
+              "ViewState": "AgIAAMEAAAAAAAAAAAAIwNAAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-02T18:33:32.958Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

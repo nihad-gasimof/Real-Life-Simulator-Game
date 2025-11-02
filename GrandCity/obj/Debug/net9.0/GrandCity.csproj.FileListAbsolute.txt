@@ -1,0 +1,15 @@
+C:\Users\Nihad\OneDrive\Desktop\GrandCity\GrandCity\bin\Debug\net9.0\GrandCity.exe
+C:\Users\Nihad\OneDrive\Desktop\GrandCity\GrandCity\bin\Debug\net9.0\GrandCity.deps.json
+C:\Users\Nihad\OneDrive\Desktop\GrandCity\GrandCity\bin\Debug\net9.0\GrandCity.runtimeconfig.json
+C:\Users\Nihad\OneDrive\Desktop\GrandCity\GrandCity\bin\Debug\net9.0\GrandCity.dll
+C:\Users\Nihad\OneDrive\Desktop\GrandCity\GrandCity\bin\Debug\net9.0\GrandCity.pdb
+C:\Users\Nihad\OneDrive\Desktop\GrandCity\GrandCity\obj\Debug\net9.0\GrandCity.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Nihad\OneDrive\Desktop\GrandCity\GrandCity\obj\Debug\net9.0\GrandCity.AssemblyInfoInputs.cache
+C:\Users\Nihad\OneDrive\Desktop\GrandCity\GrandCity\obj\Debug\net9.0\GrandCity.AssemblyInfo.cs
+C:\Users\Nihad\OneDrive\Desktop\GrandCity\GrandCity\obj\Debug\net9.0\GrandCity.csproj.CoreCompileInputs.cache
+C:\Users\Nihad\OneDrive\Desktop\GrandCity\GrandCity\obj\Debug\net9.0\GrandCity.sourcelink.json
+C:\Users\Nihad\OneDrive\Desktop\GrandCity\GrandCity\obj\Debug\net9.0\GrandCity.dll
+C:\Users\Nihad\OneDrive\Desktop\GrandCity\GrandCity\obj\Debug\net9.0\refint\GrandCity.dll
+C:\Users\Nihad\OneDrive\Desktop\GrandCity\GrandCity\obj\Debug\net9.0\GrandCity.pdb
+C:\Users\Nihad\OneDrive\Desktop\GrandCity\GrandCity\obj\Debug\net9.0\GrandCity.genruntimeconfig.cache
+C:\Users\Nihad\OneDrive\Desktop\GrandCity\GrandCity\obj\Debug\net9.0\ref\GrandCity.dll
